@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fantasy Football Demo - Crea la tua squadra e competi">
+    <title>Fantasy Football Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div id="app">
+        
+        <!-- Home View -->
+        <section id="view-home" class="view active">
+            <header class="app-header">
+                <div class="logo-placeholder">⚽</div>
+                <h1>Fantasy Football</h1>
+                <p class="subtitle">Crea la tua squadra dei sogni</p>
+            </header>
+            
+            <nav class="main-nav">
+                <button class="btn btn-primary" data-nav="create-league">
+                    <span class="icon">🏆</span>
+                    Crea Lega
+                </button>
+                <button class="btn btn-primary" data-nav="create-team">
+                    <span class="icon">👥</span>
+                    Crea Squadra
+                </button>
+                <button class="btn btn-primary" data-nav="ranking">
+                    <span class="icon">📊</span>
+                    Classifica
+                </button>
+                <button class="btn btn-primary" data-nav="serie-a" style="background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);">
+                    <span class="icon">⚽</span>
+                    Serie A Live
+                </button>
+            </nav>
+        </section>
+
+        <!-- League Creation View -->
+        <section id="view-create-league" class="view">
+            <header class="view-header">
+                <button class="btn-back" data-nav="home">← Indietro</button>
+                <h2>Crea Nuova Lega</h2>
+            </header>
+            
+            <form id="form-create-league" class="form-card">
+                <div class="form-group">
+                    <label for="league-name">Nome Lega</label>
+                    <input type="text" id="league-name" name="leagueName" 
+                           placeholder="Es: Serie A Fantasy" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="team-count">Numero Squadre</label>
+                    <select id="team-count" name="teamCount">
+                        <option value="4">4 squadre</option>
+                        <option value="6">6 squadre</option>
+                        <option value="8" selected>8 squadre</option>
+                        <option value="10">10 squadre</option>
+                        <option value="12">12 squadre</option>
+                    </select>
+                </div>
+                
+                <div class="error-message" id="league-error"></div>
+                
+                <button type="submit" class="btn btn-success">Crea Lega</button>
+            </form>
+        </section>
+
+        <!-- Team Creation View -->
+        <section id="view-create-team" class="view">
+            <header class="view-header">
+                <button class="btn-back" data-nav="home">← Indietro</button>
+                <h2>Crea la Tua Squadra</h2>
+            </header>
+            
+            <div class="team-creation-container">
+                <form id="form-team-name" class="form-card">
+                    <div class="form-group">
+                        <label for="team-name">Nome Squadra</label>
+                        <input type="text" id="team-name" name="teamName" 
+                               placeholder="Es: I Campioni" required>
+                    </div>
+                    
+                    <div class="budget-display">
+                        <span class="budget-label">Budget Disponibile:</span>
+                        <span class="budget-value" id="budget-value">500</span>
+                        <span class="budget-currency">crediti</span>
+                    </div>
+                    
+                    <div class="error-message" id="team-error"></div>
+                </form>
+                
+                <!-- Coach Selection -->
+                <div class="coach-selection-container">
+                    <h3>Scegli il Tuo Allenatore</h3>
+                    <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: var(--spacing-md);">
+                        L'allenatore commenterà i risultati delle tue partite
+                    </p>
+                    <div id="coaches-grid" class="coaches-grid"></div>
+                </div>
+                
+                <div class="players-container">
+                    <h3>Seleziona Giocatori</h3>
+                    
+                    <div class="role-section">
+                        <h4 class="role-title">Portieri</h4>
+                        <div id="players-goalkeeper" class="players-list"></div>
+                    </div>
+                    
+                    <div class="role-section">
+                        <h4 class="role-title">Difensori</h4>
+                        <div id="players-defender" class="players-list"></div>
+                    </div>
+                    
+                    <div class="role-section">
+                        <h4 class="role-title">Centrocampisti</h4>
+                        <div id="players-midfielder" class="players-list"></div>
+                    </div>
+                    
+                    <div class="role-section">
+                        <h4 class="role-title">Attaccanti</h4>
+                        <div id="players-attacker" class="players-list"></div>
+                    </div>
+                </div>
+                
+                <button id="btn-save-team" class="btn btn-success">Salva Squadra</button>
+            </div>
+        </section>
+
+        <!-- Team View -->
+        <section id="view-team" class="view">
+            <header class="view-header">
+                <h2>La Mia Squadra</h2>
+            </header>
+            
+            <div id="team-display-container">
+                <div class="empty-state" id="team-empty-state">
+                    <p>Non hai ancora creato una squadra</p>
+                    <button class="btn btn-primary" data-nav="create-team">Crea Squadra</button>
+                </div>
+                
+                <div id="team-field" class="football-field" style="display: none;">
+                    <div class="score-display">
+                        <span class="score-label">Punteggio Totale:</span>
+                        <span class="score-value" id="team-total-score">0</span>
+                    </div>
+                    
+                    <div class="field-positions">
+                        <div class="position-row" id="position-goalkeeper"></div>
+                        <div class="position-row" id="position-defender"></div>
+                        <div class="position-row" id="position-midfielder"></div>
+                        <div class="position-row" id="position-attacker"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ranking View -->
+        <section id="view-ranking" class="view">
+            <header class="view-header">
+                <h2>Classifica</h2>
+            </header>
+            
+            <div id="ranking-container">
+                <div class="empty-state" id="ranking-empty-state">
+                    <p>Nessuna squadra disponibile</p>
+                    <button class="btn btn-primary" data-nav="create-league">Crea Lega</button>
+                </div>
+                
+                <div id="ranking-list" class="ranking-list" style="display: none;"></div>
+            </div>
+        </section>
+
+        <!-- Real Serie A View -->
+        <section id="view-serie-a" class="view">
+            <header class="view-header">
+                <h2>Serie A - Dati Reali</h2>
+            </header>
+            
+            <div class="serie-a-container">
+                <!-- Tab Navigation -->
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="standings">Classifica</button>
+                    <button class="tab-btn" data-tab="fixtures">Partite</button>
+                </div>
+                
+                <!-- Standings Tab -->
+                <div id="tab-standings" class="tab-content active">
+                    <div class="loading-state" id="standings-loading">
+                        <p>Caricamento classifica...</p>
+                    </div>
+                    <div id="standings-container" class="standings-container" style="display: none;"></div>
+                </div>
+                
+                <!-- Fixtures Tab -->
+                <div id="tab-fixtures" class="tab-content">
+                    <div class="loading-state" id="fixtures-loading">
+                        <p>Caricamento partite...</p>
+                    </div>
+                    <div id="fixtures-container" class="fixtures-container" style="display: none;"></div>
+                </div>
+                
+                <!-- API Key Setup Notice -->
+                <div class="api-notice">
+                    <p style="font-size: 0.875rem; color: var(--color-text-light); text-align: center; margin-top: var(--spacing-lg);">
+                        💡 <strong>Nota:</strong> Per dati reali, configura la tua API key gratuita da 
+                        <a href="https://www.api-football.com/" target="_blank" style="color: var(--color-primary);">api-football.com</a>
+                        (100 richieste/giorno gratis)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Simulate Match Button (Floating Action Button) -->
+    <button id="btn-simulate-match" class="simulate-match-btn" title="Simula Giornata">
+        ⚽
+    </button>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-nav="home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-item" data-nav="team">
+            <span class="nav-icon">⚽</span>
+            <span class="nav-label">Squadra</span>
+        </button>
+        <button class="nav-item" data-nav="ranking">
+            <span class="nav-icon">🏆</span>
+            <span class="nav-label">Classifica</span>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

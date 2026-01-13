@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fantasy Football Demo - App innovativa con Allenatore Personale">
+    <title>Fantasy Football Demo - Anteprima</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .features {
+            background: white;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+
+        .coaches-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 4rem 2rem;
+            color: white;
+        }
+
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .coach-preview {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .coach-avatar {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .coach-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .coach-desc {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .screenshots {
+            background: #f8fafc;
+            padding: 4rem 2rem;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .screenshot-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .screenshot-title {
+            padding: 1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>⚽ Fantasy Football Demo</h1>
+        <p class="subtitle">L'app di Fantacalcio con Allenatore Personale</p>
+        <div class="cta-buttons">
+            <a href="./app.html" class="btn btn-primary">🚀 Prova la Demo</a>
+            <a href="https://github.com/xtruel/fantacalciorepo" class="btn btn-secondary" target="_blank">📦 Vedi su GitHub</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Funzionalità Principali</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Crea Leghe</h3>
+                    <p>Crea leghe private con squadre generate automaticamente</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">Gestione Squadra</h3>
+                    <p>Seleziona giocatori con budget limitato e crea la tua formazione</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Budget Dinamico</h3>
+                    <p>Sistema di budget in tempo reale con validazione automatica</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚽</div>
+                    <h3 class="feature-title">Campo da Calcio</h3>
+                    <p>Visualizza la tua formazione su un campo stilizzato</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Classifica Live</h3>
+                    <p>Ranking automatico con evidenziazione della tua squadra</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">Dati Serie A</h3>
+                    <p>Integrazione con API per dati reali del campionato</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coaches Section -->
+    <section class="coaches-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">🌟 Funzionalità Distintiva: Allenatore Personale</h2>
+            <p style="text-align: center; font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.9;">
+                Scegli il tuo allenatore che commenterà i risultati delle tue partite con frasi uniche!
+            </p>
+            <div class="coaches-grid">
+                <div class="coach-preview">
+                    <div class="coach-avatar">🧙‍♂️</div>
+                    <div class="coach-name">Il Filosofo</div>
+                    <div class="coach-desc">Riflessivo e profondo</div>
+                </div>
+                <div class="coach-preview">
+                    <div class="coach-avatar">📋</div>
+                    <div class="coach-name">Il Tattico</div>
+                    <div class="coach-desc">Ossessionato dagli schemi</div>
+                </div>
+                <div class="coach-preview">
+                    <div class="coach-avatar">💪</div>
+                    <div class="coach-name">Il Corto Muso</div>
+                    <div class="coach-desc">Pratico e diretto</div>
+                </div>
+                <div class="coach-preview">
+                    <div class="coach-avatar">🔥</div>
+                    <div class="coach-name">Il Motivatore</div>
+                    <div class="coach-desc">Sempre positivo</div>
+                </div>
+                <div class="coach-preview">
+                    <div class="coach-avatar">😏</div>
+                    <div class="coach-name">L'Ironico</div>
+                    <div class="coach-desc">Sarcastico e pungente</div>
+                </div>
+                <div class="coach-preview">
+                    <div class="coach-avatar">🍀</div>
+                    <div class="coach-name">Lo Scaramantico</div>
+                    <div class="coach-desc">Superstizioso</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots">
+        <div class="container">
+            <h2 class="section-title">Anteprima Schermate</h2>
+            <div class="screenshots-grid">
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">🏠</div>
+                    <div class="screenshot-title">Home</div>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">👥</div>
+                    <div class="screenshot-title">Creazione Squadra</div>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">⚽</div>
+                    <div class="screenshot-title">Campo da Calcio</div>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">🏆</div>
+                    <div class="screenshot-title">Classifica</div>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">💬</div>
+                    <div class="screenshot-title">Commento Allenatore</div>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">📊</div>
+                    <div class="screenshot-title">Serie A Live</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="hero" style="min-height: 50vh;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Pronto a Provare?</h2>
+        <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">
+            Testa subito la demo e scopri tutte le funzionalità
+        </p>
+        <div class="cta-buttons">
+            <a href="./app.html" class="btn btn-primary">🚀 Apri la Demo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Fantasy Football Demo - Progetto dimostrativo</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://github.com/xtruel/fantacalciorepo" target="_blank">GitHub Repository</a>
+        </p>
+    </footer>
+</body>
+</html>

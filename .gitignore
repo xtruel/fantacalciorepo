@@ -1,0 +1,25 @@
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables (if you add them later)
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.temp
+
+# API keys (reminder to not commit them)
+# Remember to keep your API key private!
