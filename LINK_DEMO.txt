@@ -1,0 +1,23 @@
+🎉 DEMO FANTASY FOOTBALL - ONLINE!
+
+📱 LANDING PAGE (Presentazione):
+https://xtruel.github.io/fantacalciorepo/
+
+🚀 APP FUNZIONANTE (Demo Diretta):
+https://xtruel.github.io/fantacalciorepo/app.html
+
+⏱️ NOTA: Il deploy richiede 1-3 minuti.
+Se vedi errore 404, aspetta e ricarica.
+
+✅ COSA TESTARE:
+1. Crea una lega (es: "Serie A Fantasy", 8 squadre)
+2. Crea squadra e scegli un ALLENATORE (prova "L'Ironico"!)
+3. Seleziona giocatori (budget 500 crediti)
+4. Clicca sul pulsante ⚽ in basso a destra
+5. Guarda il commento del tuo allenatore! 😄
+
+📊 REPOSITORY GITHUB:
+https://github.com/xtruel/fantacalciorepo
+
+---
+Condividi questi link con il cliente! 🎊
