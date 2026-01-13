@@ -1,8 +1,8 @@
 # 🎉 DEMO ONLINE - Fantasy Football
 
-## ✅ GitHub Pages Attivato!
+## ✅ Deploy Completato!
 
-Il deploy è stato avviato con successo! GitHub sta pubblicando la tua demo.
+Il repository è stato aggiornato e GitHub Pages sta processando il deploy.
 
 ## 🌐 Link della Demo
 
@@ -18,7 +18,15 @@ https://xtruel.github.io/fantacalciorepo/app.html
 
 ## ⏱️ Tempo di Attesa
 
-Il deploy richiede **1-3 minuti**. Se vedi un errore 404, aspetta ancora un po' e ricarica la pagina.
+Il deploy richiede **2-5 minuti**. GitHub Pages sta processando i file.
+
+### Come Verificare lo Stato
+
+1. Vai su: https://github.com/xtruel/fantacalciorepo/actions
+2. Vedrai il workflow "pages build and deployment" in esecuzione
+3. Quando diventa verde ✅, il sito è online!
+
+Oppure prova direttamente il link dopo qualche minuto.
 
 ## 📋 Cosa Puoi Fare Ora
 
